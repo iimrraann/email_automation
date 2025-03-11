@@ -1,3 +1,5 @@
+import subprocess
+
 addresses = ['example1@example.com', 'example2@example.com']
 
 for address in addresses:
