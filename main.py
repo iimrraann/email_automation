@@ -1,14 +1,10 @@
-import subprocess
-import pandas as pd
-
-
-addresses = ['']
+addresses = ['example1@example.com', 'example2@example.com']
 
 for address in addresses:
     email_to = address
     email_cc = address
-    email_subject = 'subject'
-    email_body = 'body'
+    email_subject = 'Test Email'
+    email_body = 'This is a test email sent via automation.'
 
     command = f'''
     $outlook = new-object -comobject outlook.application
@@ -23,14 +19,11 @@ for address in addresses:
     $outlook.Quit()
     Write-Host "Email Sent"
     Start-Sleep -Seconds 10
-        '''
+    '''
     
     process = subprocess.Popen(['powershell', '-Command', command], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     stdout, stderr = process.communicate()
 
-    # Decode the output and errors (they come as bytes)
     print("Output:\n", stdout.decode())
     print("Error:\n", stderr.decode())
-
-    break
